@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>P3 Documentation</title>
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Matching Game</h1>
+    <p>I was inspired by memory matching games, where the player would have to pick out of a set of identical tiles to reveal the item. The goal was</p>
+    <p>to match all with their identical pair hidden somewhere else on the grid, and memorization of previously discovered items was crucial to succeding.</p>
+    <p>This seemed perfect for an interactive experience based on showing and hiding interaction functions in js and html</p>
+
+    <h1>Stage 1 - UI Setup</h1>
+    <p>This project began with the 2x3 grid the user would be playing on, in order to simplify the game to only work with thre color pairs. Each cell would </p>
+    <p>have an "item" class which defined its size and color, as well as a unique id tag so each could later be selected. From here onward, the css code does not change.</p>
+    <div class="row">
+      <div class="column">
+        <img src="2.PNG"style="width:100%">
+      </div>
+      <div class="column">
+        <img src="2-A.PNG"style="width:100%">
+      </div>
+      <div class="column">
+        <img src="1.PNG"style="width:100%">
+      </div>
+    </div> 
+
+
+    <h1>Stage 2 - Assigning Colors</h1>
+    <p>Next each of the cells would have to be randomly assigned one of three colors: red blue and green. However, it could only assign each color </p>
+    <p>exactly twice, and without overwriting an already assigned cell.</p><br>
+    <p>This was done by creating a for loop within the "initGame" function which, upon game initialization, would run through each cell via their</p>
+    <p>unique id number, and randomly assign them one of the three colors. A array variable called "assigned" was created to keep track of how many</p>
+    <p>were assigned with each color, and if already two have bee assigned to a color, it would be rerolled until a free color was assigned</p>
+    <div class="row">
+      <div class="column">
+        <img src="3-A.PNG"style="width:100%">
+      </div>
+      <div class="column">
+        <img src="3-B.PNG"style="width:100%">
+      </div>
+      <div class="column">
+        <img src="3.PNG"style="width:100%">
+      </div>
+    </div> 
+
+
+    <h1>Stage 3 - Toggeling</h1>
+    <p>Now, each cell needed to have a toggle function, where upon clicking the cell, it would toggle itself between shown and hidden. This was relegated</p>
+    <p>to two functions, which were called in the "toggleSquare" function and could be called in future functions. In order to prevent the user from selecting</p>
+    <p>more than two, the toggle function kept track of how many open squares there were, and prevented itself from toggeling more cells.</p>
+      <div class="row">
+        <div class="column">
+          <img src="4-A.PNG"style="width:100%">
+        </div>
+        <div class="column">
+          <img src="4-B.PNG"style="width:100%">
+        </div>
+        <div class="column">
+          <img src="4-C.PNG"style="width:100%">
+        </div>
+        <div class="column">
+          <img src="4.PNG"style="width:100%">
+        </div>
+      </div> 
+
+
+    <h1>Stage 4 - Resolving, Matching and Timing</h1>
+    <p>Next, Logic needed to be introduced which could detect whether two cells which were revealed had identical colors, and if they matched, the pair</p>
+    <p>would be marked "resolved". If they did not match, the two squares would stay for a period of around 1 second, where no other cell could be</p>
+    <p>selected, before hiding both simultaneaously. Resolved pairs could also not be toggled off again and when all were resolved, the game would restart.</p>
+    <br>
+    <p>First, a function was created called "checkForMatchesAndMarkResolved". When the user selects two cells, their color value is saved in the 'openones' array.</p>
+    <p>Later, if the two values are equal, both are marked in the 'resolved' array, and can no longer be selected in the "toggleSquare" function. Otherwise, the</p>
+    <p>'hideTwoSquares' function is enabled after around one second, and using the IDs, both images are hidden. Finally the 'sum' counter keeps track of how many</p>
+    <p>cells are resolved. If all are resolved, the game is re-initialized after about 1 second, beginning the game over again.</p>
+    <div class="row">
+      <div class="column">
+        <img src="5-A.PNG"style="width:100%">
+      </div>
+      <div class="column">
+        <img src="5-B.PNG"style="width:100%">
+      </div>
+      <div class="column">
+        <img src="5.PNG"style="width:100%">
+      </div>
+    </div>
+  </body>
+</html> 
